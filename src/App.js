@@ -29,18 +29,19 @@ class App extends React.Component {
       ? items.filter((item) => item.sys.contentType.sys.id === 'lesson')
       : null;
 
+    if (!lessons) {
+      return 'Loading';
+    }
+
     return (
       <div className="main">
         <Switch>
           <Route exact path="/" render={() => (
-            lessons ?
-              lessons.map((lesson) => (
-                <div key={lesson.sys.id}>
-                  <Link to={`/lesson/${lesson.sys.id}`}>{ lesson.fields.title }</Link>
-                </div>
-              ))
-            :
-             'Loading'
+            lessons.map((lesson) => (
+              <div key={lesson.sys.id}>
+                <Link to={`/lesson/${lesson.sys.id}`}>{ lesson.fields.title }</Link>
+              </div>
+            ))
           )} />
           <Route path="/lesson/:id" render={(props) => {
             const { id } = props.match.params;
