@@ -30,7 +30,7 @@ module.exports = {
     // 'no-alert': OFF,
     // 'func-names': OFF,
     'comma-dangle': [ERROR, 'never'],
-    // 'react/prop-types': OFF,
+    'react/prop-types': OFF,
     // 'react/sort-comp': OFF,
     // 'react/no-multi-comp': OFF,
     // 'react/no-did-mount-set-state': OFF,
