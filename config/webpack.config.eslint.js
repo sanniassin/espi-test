@@ -5,7 +5,7 @@ const srcDir = path.resolve(__dirname, '../src');
 module.exports = {
   context: srcDir,
   resolve: {
-    extensions: ['.js', '.scss', '.jpg', '.jpeg', '.png', '.gif', '.svg'],
+    extensions: ['.js', '.scss'],
     modules: ['node_modules', '.']
   }
 };

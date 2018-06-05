@@ -47,7 +47,7 @@ module.exports = {
     jsonpFunction: 'sdelanoWebpackJsonp'
   },
   resolve: {
-    extensions: ['.js', '.scss', '.jpg', '.jpeg', '.png', '.gif', '.svg', '.webm', '.mp4'],
+    extensions: ['.js', '.scss'],
     modules: ['node_modules', '.']
   },
   performance: {
@@ -55,28 +55,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style.[chunkhash].css'),
-    new webpack.NormalModuleReplacementPlugin(/\.(png|jpg|jpeg|gif|svg|mp4|webm)$/, (module) => {
-      const paths = [
-        path.resolve(module.context, module.request),
-        path.resolve(srcDir, module.request),
-        path.resolve(imgDir, module.request)
-      ];
-      while (paths.length) {
-        const imgPath = paths.shift();
-        if (fs.existsSync(imgPath)) {
-          module.request = imgPath;
-          break;
-        }
-      }
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(srcDir, 'index.html'),
       filename: 'index.html'
     }),
-    new webpack.DefinePlugin(definePluginOptions),
-    new CopyWebpackPlugin([
-      { from: 'style/images', to: 'style/images' }
-    ])
+    new webpack.DefinePlugin(definePluginOptions)
   ],
   module: {
     rules: [
@@ -105,7 +88,6 @@ module.exports = {
               loader: 'postcss-loader',
               options: {
                 plugins: [
-                  require('postcss-svgo'),
                   require('autoprefixer')({
                     browsers
                   }),
