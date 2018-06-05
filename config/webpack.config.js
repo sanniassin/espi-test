@@ -105,10 +105,7 @@ module.exports = {
             'import-glob-loader'
           ]
         })
-      },
-      { test: /\.svg$/, use: ['file-loader?name=style/images/[name].[ext]', 'svgo-loader'] },
-      { test: /\.(png|jpg|jpeg|gif)$/, issuer: /\.scss$/, use: 'file-loader?name=images/[name].[ext]' },
-      { test: /\.(otf|ttf|woff|woff2|eot)$/, use: 'file-loader?name=style/fonts/[name].[ext]' }
+      }
     ]
   },
   stats: {
