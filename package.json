@@ -6,7 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p --config ./config/webpack.config.js",
     "watch": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js",
-    "start": "express server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
