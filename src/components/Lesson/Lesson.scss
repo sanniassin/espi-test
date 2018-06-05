@@ -1,0 +1,10 @@
+.lesson { max-width: 800px; padding: 18px;
+  img { max-width: 100%; }
+
+  &__code {
+    &-languages { display: flex; }
+    &-language { background-color: $grey-background; padding: 6px; cursor: pointer; text-decoration: dash; color: $blue;
+      &--active { text-decoration: none; cursor: default; color: $grey-dark; }
+    }
+  }
+}

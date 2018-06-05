@@ -5,7 +5,10 @@
 @import './reset.scss';
 
 html { overflow-y: visible; height: 100%; min-height: 0; }
-body { overflow-y: scroll; padding: 0; margin: 0; color: black; font-family: $Roboto; min-height: 100%; min-width: 100%; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-size-adjust: 100%; }
-input, textarea { font-family: $Roboto; color: black; }
+body { overflow-y: scroll; padding: 0; margin: 0; color: $grey-dark; font-family: $Roboto; min-height: 100%; min-width: 100%; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-size-adjust: 100%; }
+input, textarea { font-family: $Roboto; color: $grey-dark; }
 
 body { height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: white; }
+
+//@import '../components/Basic/**/*.scss';
+@import '../components/!(Basic)/**/*.scss';

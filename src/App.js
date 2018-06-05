@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import { Route, Redirect, Switch, Link, withRouter } from 'react-router-dom';
 
 import { loadEntries } from 'ducks/content';
+
+import Lesson from 'components/Lesson';
 
 import './style/style.scss';
 
 
 const mapStateToProps = (state) => {
   return {
-    entries: state.content.entries.items
+    entries: state.content.entries
   };
 };
 
@@ -23,24 +24,34 @@ class App extends React.Component {
 
   render() {
     const { entries } = this.props;
+    const { items } = entries;
+    const lessons = items
+      ? items.filter((item) => item.sys.contentType.sys.id === 'lesson')
+      : null;
 
     return (
       <div className="main">
-        { entries ?
-            entries.map(entry => (
-              <div key={entry.sys.id}>
-                <ReactMarkdown
-                  source={
-                    entry.fields.modules
-                    ? entry.fields.modules[0].fields.copy
-                    : entry.fields.copy
-                  }
-                />
-              </div>
-            ))
-          :
-           'Loading'
-        }
+        <Switch>
+          <Route exact path="/" render={() => (
+            lessons ?
+              lessons.map((lesson) => (
+                <div key={lesson.sys.id}>
+                  <Link to={`/lesson/${lesson.sys.id}`}>{ lesson.fields.title }</Link>
+                </div>
+              ))
+            :
+             'Loading'
+          )} />
+          <Route path="/lesson/:id" render={(props) => {
+            const { id } = props.match.params;
+            const lesson = lessons.find((item) => item.sys.id === id);
+            if (!lesson) {
+              return <Redirect to="/" />;
+            }
+            return <Lesson lesson={lesson} />;
+          }} />
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }
