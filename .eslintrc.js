@@ -67,7 +67,7 @@ module.exports = {
     // 'jsx-a11y/anchor-has-content': OFF,
     // 'jsx-a11y/anchor-is-valid': OFF,
     // 'jsx-a11y/click-events-have-key-events': OFF,
-    // 'arrow-parens': OFF,
+    'arrow-parens': [ERROR, "always"],
     // 'no-underscore-dangle': OFF,
     'arrow-body-style': OFF,
     // 'no-return-assign': OFF,
