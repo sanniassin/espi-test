@@ -14,3 +14,18 @@ $grey-darklight: #999999;
 $grey-light: #CDCDCD;
 $grey-background: #F5F5FF;
 $blue: #1071FF;
+$blue-hover: #579CFF;
+
+@mixin default-transition($props...) {
+  $str: '';
+  $i: 1;
+  $len: length($props);
+  @each $prop in $props {
+    $str: $str + $prop + ' 0.1s ease-in-out';
+    @if $i < $len {
+      $str: $str + ', ';
+    }
+    $i: $i + 1;
+  }
+  transition: unquote($str);
+}

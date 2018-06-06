@@ -57,7 +57,7 @@ module.exports = {
     // 'prefer-template': OFF,
     // 'object-shorthand': OFF,
     // 'space-before-function-paren': OFF,
-    // 'quote-props': OFF,
+    'quote-props': [ERROR, 'consistent'],
     // 'no-else-return': OFF,
     // 'import/first': OFF,
     // 'import/no-mutable-exports': OFF,
@@ -79,7 +79,7 @@ module.exports = {
     // 'prefer-spread': OFF,
     // 'prefer-const': OFF,
     // 'no-throw-literal': OFF,
-    // 'object-curly-newline': OFF,
+    'object-curly-newline': OFF,
     // 'function-paren-newline': OFF,
     // 'prefer-destructuring': OFF
   }

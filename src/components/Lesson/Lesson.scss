@@ -1,5 +1,8 @@
-.lesson { max-width: 800px; padding: 18px;
+.lesson {
   img { max-width: 100%; }
+  &__image { text-align: center;
+    &-caption { margin-top: 12px; }
+  }
 
   &__code {
     &-languages { display: flex; }

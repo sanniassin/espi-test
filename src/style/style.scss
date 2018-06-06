@@ -10,5 +10,11 @@ input, textarea { font-family: $Roboto; color: $grey-dark; }
 
 body { height: 100%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: white; }
 
-//@import '../components/Basic/**/*.scss';
-@import '../components/!(Basic)/**/*.scss';
+@import '../components/_basic/**/*.scss';
+
+a { @extend .text-button; }
+h1 { @include heading1; }
+h2 { @include heading2; }
+
+@import '../components/!(_basic)/**/*.scss';
+@import '../pages/**/*.scss';

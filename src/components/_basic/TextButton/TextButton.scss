@@ -1,0 +1,3 @@
+.text-button { text-decoration: none; color: $blue; cursor: pointer; @include default-transition(color); position: relative;
+  &:hover { color: $blue-hover; text-decoration: none; transition: none; }
+}

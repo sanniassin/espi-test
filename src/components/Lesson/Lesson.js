@@ -11,7 +11,7 @@ const components = {
   lessonCodeSnippets: LessonCodeSnippets
 };
 
-class Lesson extends React.Component {
+class Lesson extends React.PureComponent {
   render() {
     const { lesson } = this.props;
     const { modules } = lesson.fields;

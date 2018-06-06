@@ -1,48 +1,52 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, Switch, Link, withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
-import { loadEntries } from 'ducks/content';
+import { loadContent } from 'ducks/content';
 
 import Lesson from 'components/Lesson';
+import Course from 'components/Course';
+
+import ContentList from 'pages/ContentList';
 
 import './style/style.scss';
 
 
 const mapStateToProps = (state) => {
   return {
-    entries: state.content.entries
+    entries: state.content.entries,
+    courses: state.content.courses,
+    lessons: state.content.lessons
   };
 };
 
-class App extends React.Component {
+class App extends React.PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
 
-    dispatch(loadEntries());
+    dispatch(loadContent());
   }
 
   render() {
-    const { entries } = this.props;
-    const { items } = entries;
-    const lessons = items
-      ? items.filter((item) => item.sys.contentType.sys.id === 'lesson')
-      : null;
+    const { entries, courses, lessons } = this.props;
 
-    if (!lessons) {
+    if (!entries) {
       return 'Loading';
     }
 
     return (
       <div className="main">
         <Switch>
-          <Route exact path="/" render={() => (
-            lessons.map((lesson) => (
-              <div key={lesson.sys.id}>
-                <Link to={`/lesson/${lesson.sys.id}`}>{ lesson.fields.title }</Link>
-              </div>
-            ))
-          )} />
+          <Route exact path="/" component={ContentList} />
+          <Route path="/courses/:id/:lessonId?" render={(props) => {
+            const { id, lessonId } = props.match.params;
+            const course = courses.find((item) => item.fields.slug === id);
+            if (!course) {
+              return <Redirect to="/" />;
+            }
+            return <Course course={course} lessonId={lessonId} />;
+          }} />
           <Route path="/lesson/:id" render={(props) => {
             const { id } = props.match.params;
             const lesson = lessons.find((item) => item.sys.id === id);

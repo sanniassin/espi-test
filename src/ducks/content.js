@@ -1,7 +1,8 @@
 import immutableUpdate from 'immutability-helper';
 import * as contentful from 'contentful';
+import _ from 'lodash';
 
-export const CONTENT_LOAD_ENTRIES_SUCCESS = 'CONTENT_LOAD_ENTRIES_SUCCESS';
+export const CONTENT_LOAD_CONTENT_SUCCESS = 'CONTENT_LOAD_CONTENT_SUCCESS';
 
 const client = contentful.createClient({
   space: 'ykzoqp0e2iu9',
@@ -9,26 +10,44 @@ const client = contentful.createClient({
 });
 
 const initialState = {
-  entries: {}
+  entries: null,
+  lessons: [],
+  layouts: [],
+  courses: []
 };
 
-export const fetchEntries = () => {
+export const fetchContent = () => {
   return client.getEntries();
 };
 
-const loadEntriesSuccess = (payload) => {
+const loadContentSuccess = (payload) => {
   return {
-    type: CONTENT_LOAD_ENTRIES_SUCCESS,
+    type: CONTENT_LOAD_CONTENT_SUCCESS,
     payload
   };
 };
 
-export const loadEntries = () => {
+export const loadContent = () => {
   return (dispatch) => {
-    return fetchEntries()
+    return fetchContent()
       .then((payload) => {
-        dispatch(loadEntriesSuccess(payload));
-        return payload;
+        const { items } = payload;
+        const { lessons, courses, layouts } = _.groupBy(items, (item) => {
+          const contentType = item.sys.contentType.sys.id;
+          return {
+            lesson: 'lessons',
+            course: 'courses',
+            layout: 'layouts'
+          }[contentType] || 'unsorted';
+        });
+        const content = {
+          lessons,
+          courses,
+          layouts,
+          entries: payload
+        };
+        dispatch(loadContentSuccess(content));
+        return content;
       });
   };
 };
@@ -36,9 +55,9 @@ export const loadEntries = () => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case CONTENT_LOAD_ENTRIES_SUCCESS:
+    case CONTENT_LOAD_CONTENT_SUCCESS:
       return immutableUpdate(state, {
-        entries: { $set: action.payload }
+        $merge: action.payload
       });
     default:
       return state;

@@ -1,0 +1,8 @@
+@mixin heading1() { font-family: $Roboto; font-size: 32px; line-height: 42px; font-weight: $bold; }
+
+@mixin heading2() { font-family: $Roboto; font-size: 30px; line-height: 36px; font-weight: $bold; }
+
+.heading {
+  &--1 { @include heading1; }
+  &--2 { @include heading2; }
+}
