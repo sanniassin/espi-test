@@ -20,7 +20,7 @@ class ContentList extends React.PureComponent {
 
     return (
       <div className="content-list">
-        <Sidebar items={sidebarItems} title="Courses" />
+        <Sidebar className="content-list__sidebar" items={sidebarItems} title="Courses" />
       </div>
     );
   }
