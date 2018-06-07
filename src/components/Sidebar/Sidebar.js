@@ -16,7 +16,7 @@ const Sidebar = (props) => {
 
   return (
     <nav className={classes}>
-      <Text big className="sidebar__title">{ title || 'Table of contents' }</Text>
+      { !!title && <Text big className="sidebar__title">{ title }</Text> }
       <ul className="sidebar__items">
         { items.map((item) => {
           const isActive = _.trimEnd(location.pathname, '/') === _.trimEnd(item.url, '/');

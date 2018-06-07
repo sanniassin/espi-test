@@ -1,10 +1,10 @@
-.content-list { padding: 50px 30px; display: flex; justify-content: center; 
+.content-list { padding: 0 30px 50px; display: flex; justify-content: center; 
   &__sidebar { width: 228px; padding-top: 12px; }
   &:after { content: ''; display: block; max-width: 732px; width: 100%; padding-left: 32px; box-sizing: border-box; }
 }
 
 @media #{$mobile} {
-  .content-list { flex-direction: column; padding: 30px 0;
+  .content-list { flex-direction: column; padding: 0 0 30px;
     &__sidebar { width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px; padding-top: 0; }
     &:after { padding-left: 18px; padding-right: 18px; }
   }

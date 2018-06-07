@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Sidebar from 'components/Sidebar';
+import Breadcrumbs from 'components/Breadcrumbs';
 
 
 const mapStateToProps = (state) => {
@@ -17,11 +18,20 @@ class ContentList extends React.PureComponent {
       title: item.fields.title,
       url: `/courses/${item.fields.slug}`
     }));
+    const breadcrumbsItems = [
+      {
+        title: 'Courses',
+        url: '/'
+      }
+    ];
 
     return (
-      <div className="content-list">
-        <Sidebar className="content-list__sidebar" items={sidebarItems} title="Courses" />
-      </div>
+      <React.Fragment>
+        <Breadcrumbs items={breadcrumbsItems} />
+        <div className="content-list">
+          <Sidebar className="content-list__sidebar" items={sidebarItems} />
+        </div>
+      </React.Fragment>
     );
   }
 }

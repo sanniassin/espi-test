@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { Heading1 } from 'components/_basic/Headings';
 import Sidebar from 'components/Sidebar';
+import Breadcrumbs from 'components/Breadcrumbs';
 import Lesson from 'components/Lesson';
 
 
@@ -21,19 +22,38 @@ class Course extends React.PureComponent {
         url: `/courses/${slug}/${item.fields.slug}`
       }))
     ];
+    const breadcrumbsItems = [
+      {
+        title: 'Courses',
+        url: '/'
+      },
+      {
+        title,
+        url: `/courses/${slug}`
+      }
+    ];
+    if (lesson) {
+      breadcrumbsItems.push({
+        title: lesson.fields.title,
+        url: `/courses/${slug}/${lesson.fields.slug}`
+      });
+    }
 
     return (
-      <div className="course">
-        <Sidebar className="course__sidebar" items={sidebarItems} />
-        <div className="course__content">
-          <Heading1 className="course__title">{ lesson ? lesson.fields.title : title }</Heading1>
-          { lesson ?
-            <Lesson lesson={lesson} />
-          :
-            <ReactMarkdown source={description} />
-          }
+      <React.Fragment>
+        <Breadcrumbs items={breadcrumbsItems} />
+        <div className="course">
+          <Sidebar className="course__sidebar" items={sidebarItems} title="Table of contents" />
+          <div className="course__content">
+            <Heading1 className="course__title">{ lesson ? lesson.fields.title : title }</Heading1>
+            { lesson ?
+              <Lesson lesson={lesson} />
+            :
+              <ReactMarkdown source={description} />
+            }
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

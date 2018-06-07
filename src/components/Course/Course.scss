@@ -1,13 +1,13 @@
-.course { display: flex; justify-content: center; padding: 50px 30px;
+.course { display: flex; justify-content: center; padding: 0 30px 50px;
   &__sidebar { width: 228px; padding-top: 12px; }
-  &__content { @include text; max-width: 732px; width: 100%; padding-left: 32px; box-sizing: border-box;
+  &__content { @include text; max-width: $contentWidth - 228px; width: 100%; padding-left: 32px; box-sizing: border-box;
     p { margin: 16px 0; }
     h2 { margin-top: 36px; }
   }
 }
 
 @media #{$mobile} {
-  .course { flex-direction: column; padding: 30px 0;
+  .course { flex-direction: column; padding: 0 0 30px;
     &__sidebar { width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px; padding-top: 0; }
     &__content { padding-left: 18px; padding-right: 18px; margin-top: 30px; }
   }
