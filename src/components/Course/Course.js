@@ -11,6 +11,12 @@ import Lesson from 'components/Lesson';
 
 
 class Course extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    if (prevProps.lessonId !== this.props.lessonId) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   render() {
     const { course, lessonId } = this.props;
     const { lessons, title, description, slug, skillLevel, duration } = course.fields;
