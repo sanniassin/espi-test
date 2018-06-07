@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import _ from 'lodash';
 
 import { Heading1 } from 'components/_basic/Headings';
+import Text from 'components/_basic/Text';
+import Button from 'components/_basic/Button';
 import Sidebar from 'components/Sidebar';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Lesson from 'components/Lesson';
@@ -10,8 +13,10 @@ import Lesson from 'components/Lesson';
 class Course extends React.PureComponent {
   render() {
     const { course, lessonId } = this.props;
-    const { lessons, title, description, slug } = course.fields;
-    const lesson = lessons.find((item) => item.fields.slug === lessonId);
+    const { lessons, title, description, slug, skillLevel, duration } = course.fields;
+    const lessonIndex = lessons.findIndex((item) => item.fields.slug === lessonId);
+    const lesson = lessons[lessonIndex];
+    const isLastLesson = lesson === _.last(lessons);
     const sidebarItems = [
       {
         title: 'Course overview',
@@ -46,10 +51,22 @@ class Course extends React.PureComponent {
           <Sidebar className="course__sidebar" items={sidebarItems} title="Table of contents" />
           <div className="course__content">
             <Heading1 className="course__title">{ lesson ? lesson.fields.title : title }</Heading1>
+            { !lesson &&
+              <Text className="course__overview">
+                Duration: { duration } minute{ duration > 1 ? 's' : '' }
+                <br />
+                Skill level: { _.capitalize(skillLevel) }
+              </Text>
+            }
             { lesson ?
               <Lesson lesson={lesson} />
             :
               <ReactMarkdown source={description} />
+            }
+            { !isLastLesson &&
+              <Button className="course__btn-next" href={`/courses/${slug}/${lessons[lessonIndex + 1].fields.slug}`}>
+                { lesson ? 'Next lesson' : 'Start course' }
+              </Button>
             }
           </div>
         </div>
