@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Heading1 } from 'components/_basic/Headings';
 import Text from 'components/_basic/Text';
 import TextButton from 'components/_basic/TextButton';
+import Article from 'components/Article';
 
 
 const mapStateToProps = (state) => {
@@ -18,14 +19,16 @@ class Courses extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <div className="courses">
+        <Article className="courses">
           <Heading1>Courses</Heading1>
-          { courses.map((item) => (
-            <Text key={item.sys.id}>
-              <TextButton href={`/courses/${item.fields.slug}`}>{ item.fields.title }</TextButton>
-            </Text>
-          ))}
-        </div>
+          <Text>
+            { courses.map((item) => (
+              <TextButton href={`/courses/${item.fields.slug}`} key={item.sys.id} className="courses__link">
+                { item.fields.title }
+              </TextButton>
+            ))}
+          </Text>
+        </Article>
       </React.Fragment>
     );
   }

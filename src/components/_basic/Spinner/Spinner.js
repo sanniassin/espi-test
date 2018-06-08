@@ -4,12 +4,12 @@ import classnames from 'classnames';
 
 class Spinner extends React.PureComponent {
   render() {
-    var { className, invertedColor } = this.props;
-    var classes = classnames(
+    const { className, invertedColor } = this.props;
+    const classes = classnames(
       'spinner-container',
       className
     );
-    var spinnerClasses = classnames({
+    const spinnerClasses = classnames({
       'spinner': true,
       'spinner--inverted-color': invertedColor
     });

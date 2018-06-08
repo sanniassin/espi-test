@@ -1,0 +1,37 @@
+.article { @include text; max-width: $contentWidth - 228px; width: 100%; padding-left: 32px; box-sizing: border-box;
+  p { margin: 16px 0; }
+  h2 { margin-top: 36px; }
+  ul, ol { list-style: none; padding: 0 0 0 16px; margin: 16px 0;
+    li { padding: 0 0 0 20px; margin: 4px 0 0; position: relative;
+      &:first-child { margin-top: 0; }
+    }
+  }
+  ul {
+    li {
+      &:before { content: '•'; position: absolute; top: 0; left: 0; font-size: 24px; }
+    }
+  }
+  ol { counter-reset: course-ordered-list-counter;
+    li { counter-increment: course-ordered-list-counter;
+      &:before { content: counter(course-ordered-list-counter)'.'; position: absolute; top: 0; right: calc(100% - 12px); }
+    }
+  }
+  code { font-family: $Inconsolata; background-color: $grey-background; }
+
+  .lesson {
+    &__code {
+      p { margin: 0; }
+    }
+  }
+}
+
+@media #{$mobile} {
+  .article { padding-left: 16px; padding-right: 16px; padding-top: 28px;
+    ul, ol { padding-left: 0; }
+    ol {
+      li { padding-left: 0; display: flex;
+        &:before { position: relative; right: auto; min-width: 20px; display: block; box-sizing: border-box; padding-right: 6px; flex-shrink: 0; }
+      }
+    }
+  }
+}

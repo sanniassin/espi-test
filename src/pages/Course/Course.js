@@ -7,6 +7,7 @@ import Text from 'components/_basic/Text';
 import Button from 'components/_basic/Button';
 import Sidebar from 'components/Sidebar';
 import Breadcrumbs from 'components/Breadcrumbs';
+import Article from 'components/Article';
 import Lesson from 'components/Lesson';
 
 
@@ -55,7 +56,7 @@ class Course extends React.PureComponent {
         <Breadcrumbs items={breadcrumbsItems} />
         <div className="course">
           <Sidebar className="course__sidebar" items={sidebarItems} title="Table of contents" />
-          <div className="course__content">
+          <Article className="course__content">
             <Heading1 className="course__title">{ lesson ? lesson.fields.title : title }</Heading1>
             { !lesson &&
               <Text className="course__overview">
@@ -74,7 +75,7 @@ class Course extends React.PureComponent {
                 { lesson ? 'Next lesson' : 'Start course' }
               </Button>
             }
-          </div>
+          </Article>
         </div>
       </React.Fragment>
     );

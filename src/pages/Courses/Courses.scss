@@ -1,7 +1,7 @@
 .courses { padding: 48px 28px; margin: 0 auto; max-width: $contentWidth; padding-left: 260px; box-sizing: border-box;
-  h1 { margin-bottom: 16px; }
+  &__link { display: table; }
 }
 
 @media #{$mobile} {
-  .courses { padding: 28px 16px; }
+  .courses { padding: 28px 16px 48px; }
 }

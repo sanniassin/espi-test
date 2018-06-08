@@ -12,6 +12,7 @@ import Spinner from '../src/components/_basic/Spinner';
 
 import Breadcrumbs from '../src/components/Breadcrumbs';
 import Sidebar from '../src/components/Sidebar';
+import Article from '../src/components/Article';
 
 import '../src/style/style.scss';
 
@@ -56,6 +57,25 @@ storiesOf('Sidebar', module).add('Demo', () => (
   </Router>
 ));
 
+storiesOf('Article', module).add('Demo', () => (
+  <Article>
+    <h1>Hello</h1>
+    <p>Article is a component which styles most widely used text elements. Such as:</p>
+    <ul>
+      <li>Bulleted Lists</li>
+      <li>Paragraphs</li>
+    </ul>
+    <p>or</p>
+    <ol>
+      <li>Numbered Lists</li>
+      <li>Headings</li>
+    </ol>
+    <h2>This is a second level heading</h2>
+    <p>And here is the image from the nice <TextButton href="https://www.alexirpan.com/2018/02/14/rl-hard.html" target="_blank">article</TextButton> about deep reinforcement learning.</p>
+    <img src="https://www.alexirpan.com/public/rl-hard/bender-70.jpg" alt="Futurama Bender meme" />
+  </Article>
+));
+
 storiesOf('Button', module)
   .add('with text', () => <Button onClick={action('clicked')} style={{ width: 200 }}>Hello Button</Button>);
 
@@ -76,7 +96,6 @@ storiesOf('TextButton', module)
       </Text>
     </Router>
   ));
-
 
 storiesOf('Spinner', module)
   .add('Clockswise rotating', () => <Spinner />);
