@@ -2,10 +2,12 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import content from './content';
+import ui from './ui';
 
 
 const rootReducer = combineReducers({
-  content
+  content,
+  ui
 });
 
 const store = createStore(

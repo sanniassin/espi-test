@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco as doccoSource } from 'react-syntax-highlighter/styles/hljs';
 import _ from 'lodash';
+
+import { setCodeLanguage } from 'ducks/ui';
 
 import Text from 'components/_basic/Text';
 import TextButton from 'components/_basic/TextButton';
@@ -56,27 +59,28 @@ const languagesConfig = {
   }
 };
 
-class LessonCodeSnippets extends React.Component {
-  state = {
-    acitveLanguage: 'java'
-  }
+const mapStateToProps = (state) => {
+  return {
+    codeLanguage: state.ui.codeLanguage
+  };
+};
 
+class LessonCodeSnippets extends React.Component {
   onLanguageChange = (language) => {
-    this.setState({
-      acitveLanguage: language
-    });
+    const { dispatch } = this.props;
+
+    dispatch(setCodeLanguage(language));
   }
 
   render() {
-    const { title, ...languages } = this.props;
-    const { acitveLanguage } = this.state;
-    const languageConfig = languagesConfig[acitveLanguage];
+    const { title, codeLanguage, dispatch, ...languages } = this.props;
+    const languageConfig = languagesConfig[codeLanguage];
 
     return (
       <div className="lesson__code">
         <div className="lesson__code-languages">
           { _.map(languages, (code, language) => {
-            const isActive = language === acitveLanguage;
+            const isActive = language === codeLanguage;
             const classes = classnames({
               'lesson__code-language': true,
               'lesson__code-language--active': isActive
@@ -96,11 +100,11 @@ class LessonCodeSnippets extends React.Component {
           })}
         </div>
         <SyntaxHighlighter language={languageConfig.highlighterLanguage} style={docco}>
-          { languages[acitveLanguage] }
+          { languages[codeLanguage] }
         </SyntaxHighlighter>
       </div>
     );
   }
 }
 
-export default LessonCodeSnippets;
+export default connect(mapStateToProps)(LessonCodeSnippets);
