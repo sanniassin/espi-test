@@ -77,7 +77,7 @@ storiesOf('Article', module).add('Demo', () => (
 ));
 
 storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')} style={{ width: 200 }}>Hello Button</Button>);
+  .add('With text', () => <Button onClick={action('clicked')} style={{ width: 200 }}>Hello Button</Button>);
 
 storiesOf('Headings', module)
   .add('H1', () => <Heading1>First level heading</Heading1>)
@@ -89,7 +89,7 @@ storiesOf('Text', module)
   .add('Big', () => <Text big>Big text<br />with line break</Text>);
 
 storiesOf('TextButton', module)
-  .add('styled with Text', () => (
+  .add('Styled with Text', () => (
     <Router>
       <Text>
         <TextButton onClick={action('clicked')} href="#">TextButton with href</TextButton>
@@ -98,4 +98,4 @@ storiesOf('TextButton', module)
   ));
 
 storiesOf('Spinner', module)
-  .add('Clockswise rotating', () => <Spinner />);
+  .add('Clockwise rotating', () => <Spinner />);
