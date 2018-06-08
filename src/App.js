@@ -5,9 +5,9 @@ import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { loadContent } from 'ducks/content';
 
 import Spinner from 'components/_basic/Spinner';
-import Course from 'components/Course';
 
-import ContentList from 'pages/ContentList';
+import Courses from 'pages/Courses';
+import Course from 'pages/Course';
 
 import './style/style.scss';
 
@@ -35,7 +35,7 @@ class App extends React.PureComponent {
           <Spinner className="main__loader" />
         :
           <Switch>
-            <Route exact path="/" component={ContentList} />
+            <Route exact path="/" component={Courses} />
             <Route path="/courses/:id/:lessonId?" render={(props) => {
               const { id, lessonId } = props.match.params;
               const course = courses.find((item) => item.fields.slug === id);

@@ -12,13 +12,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-class ContentList extends React.PureComponent {
+class Courses extends React.PureComponent {
   render() {
     const { courses } = this.props;
 
     return (
       <React.Fragment>
-        <div className="content-list">
+        <div className="courses">
           <Heading1>Courses</Heading1>
           { courses.map((item) => (
             <Text key={item.sys.id}>
@@ -31,4 +31,4 @@ class ContentList extends React.PureComponent {
   }
 }
 
-export default connect(mapStateToProps)(ContentList);
+export default connect(mapStateToProps)(Courses);
