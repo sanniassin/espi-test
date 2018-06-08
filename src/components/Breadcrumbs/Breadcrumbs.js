@@ -12,7 +12,7 @@ const Breadcrumbs = (props) => {
   return (
     <div className="breadcrumbs">
       { items.map((item) => {
-        const isActive = _.trimEnd(location.pathname, '/') === _.trimEnd(item.url, '/');
+        const isActive = !item.url || _.trimEnd(location.pathname, '/') === _.trimEnd(item.url, '/');
 
         return (
           <Text small className="breadcrumbs__item" key={item.url}>

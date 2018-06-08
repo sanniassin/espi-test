@@ -20,7 +20,7 @@ const Sidebar = (props) => {
       { !_.isEmpty(items) &&
         <ul className="sidebar__items">
           { items.map((item) => {
-            const isActive = _.trimEnd(location.pathname, '/') === _.trimEnd(item.url, '/');
+            const isActive = !item.url || _.trimEnd(location.pathname, '/') === _.trimEnd(item.url, '/');
             const itemClasses = classnames({
               'sidebar__item': true,
               'sidebar__item--active': isActive
