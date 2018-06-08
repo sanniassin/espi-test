@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  compose(typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : f => f),
+  compose(typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (f) => f),
   applyMiddleware(thunk)
 );
 

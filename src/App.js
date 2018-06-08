@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Switch, Link, withRouter } from 'react-router-dom';
-import _ from 'lodash';
+import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 
 import { loadContent } from 'ducks/content';
 

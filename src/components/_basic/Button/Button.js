@@ -13,13 +13,11 @@ const Button = (props) => {
 
   return (
     <div {...restProps} className={classes}>
-      { href ?
-        isLocalHref ?
-          <Link to={href} className="button__label">{ children }</Link>
-        :
-          <a href={href} className="button__label">{ children }</a>
-      :
-        <span className="button__label">{ children }</span>
+      { href // eslint-disable-line no-nested-ternary
+        ? isLocalHref
+          ? <Link to={href} className="button__label">{ children }</Link>
+          : <a href={href} className="button__label">{ children }</a>
+        : <span className="button__label">{ children }</span>
       }
     </div>
   );
