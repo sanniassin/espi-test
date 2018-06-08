@@ -5,9 +5,7 @@
   }
 
   &__code {
-    &-languages { display: flex;
-      p { margin-top: 0; margin-bottom: 0; }
-    }
+    &-languages { display: flex; }
     &-language { padding: 8px;
       &--active { text-decoration: none; cursor: default; color: $grey-dark; background-color: $grey-background; }
     }

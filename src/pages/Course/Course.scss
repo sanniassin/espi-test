@@ -23,6 +23,12 @@
       }
     }
     code { font-family: $Inconsolata; background-color: $grey-background; }
+
+    .lesson {
+      &__code {
+        p { margin: 0; }
+      }
+    }
   }
   &__overview { color: $grey-medium; }
   &__btn-next { margin-top: 28px; width: 208px; }
