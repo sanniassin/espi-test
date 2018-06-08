@@ -13,8 +13,8 @@ const docco = {
 };
 docco.hljs = {
   ...docco.hljs,
-  background: '#f0f0ff',
-  padding: '0 8px 8px'
+  background: '#F8F8F8',
+  padding: '8px'
 };
 
 const languagesConfig = {
