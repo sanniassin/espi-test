@@ -1,11 +1,7 @@
-.content-list { padding: 0 30px 50px; display: flex; justify-content: center; 
-  &__sidebar { width: 228px; padding-top: 12px; }
-  &:after { content: ''; display: block; max-width: 732px; width: 100%; padding-left: 32px; box-sizing: border-box; }
+.content-list { padding: 48px 28px; margin: 0 auto; max-width: $contentWidth; padding-left: 260px; box-sizing: border-box;
+  h1 { margin-bottom: 16px; }
 }
 
 @media #{$mobile} {
-  .content-list { flex-direction: column; padding: 0 0 30px;
-    &__sidebar { width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px; padding-top: 0; }
-    &:after { padding-left: 18px; padding-right: 18px; }
-  }
+  .content-list { padding: 28px 16px; }
 }

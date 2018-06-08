@@ -2,7 +2,7 @@
 
 @mixin textSmall { @include text; font-size: 14px; line-height: 24px; }
 
-@mixin textBig { @include text; font-size: 20px; line-height: 26px; }
+@mixin textBig { @include text; font-size: 22px; line-height: 28px; }
 
 .text { @include text;
   &--small { @include textSmall; }

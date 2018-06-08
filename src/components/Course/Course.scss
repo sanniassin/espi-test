@@ -1,16 +1,43 @@
-.course { display: flex; justify-content: center; padding: 0 30px 50px;
-  &__sidebar { width: 228px; padding-top: 12px; position: sticky; top: 12px; align-self: flex-start; }
+.course { display: flex; justify-content: center; padding: 0 28px 48px;
+  &__sidebar { width: 228px; position: sticky; top: 8px; align-self: flex-start;
+    .sidebar__title {
+      &:after { content: ' '; @include heading1; vertical-align: baseline; }
+    }
+  }
   &__content { @include text; max-width: $contentWidth - 228px; width: 100%; padding-left: 32px; box-sizing: border-box;
     p { margin: 16px 0; }
     h2 { margin-top: 36px; }
+    ul, ol { list-style: none; padding: 0 0 0 16px; margin: 16px 0;
+      li { padding: 0 0 0 20px; margin: 4px 0 0; position: relative;
+        &:first-child { margin-top: 0; }
+      }
+    }
+    ul {
+      li {
+        &:before { content: '•'; position: absolute; top: 0; left: 0; font-size: 24px; }
+      }
+    }
+    ol { counter-reset: course-ordered-list-counter;
+      li { counter-increment: course-ordered-list-counter;
+        &:before { content: counter(course-ordered-list-counter)'.'; position: absolute; top: 0; right: calc(100% - 12px); }
+      }
+    }
+    code { font-family: $Inconsolata; background-color: $grey-background; }
   }
   &__overview { color: $grey-medium; }
-  &__btn-next { margin-top: 30px; width: 210px; }
+  &__btn-next { margin-top: 28px; width: 208px; }
 }
 
 @media #{$mobile} {
-  .course { flex-direction: column; padding: 0 0 30px;
-    &__sidebar { width: 100%; box-sizing: border-box; padding-left: 18px; padding-right: 18px; padding-top: 0; position: relative; }
-    &__content { padding-left: 18px; padding-right: 18px; margin-top: 30px; }
+  .course { flex-direction: column; padding: 0 0 48px;
+    &__sidebar { width: 100%; box-sizing: border-box; padding-left: 16px; padding-right: 16px; padding-top: 0; position: relative; }
+    &__content { padding-left: 16px; padding-right: 16px; margin-top: 28px;
+      ul, ol { padding-left: 0; }
+      ol {
+        li { padding-left: 0; display: flex;
+          &:before { position: relative; right: auto; min-width: 20px; display: block; box-sizing: border-box; padding-right: 6px; flex-shrink: 0; }
+        }
+      }
+    }
   }
 }

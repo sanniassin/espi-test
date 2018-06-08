@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Sidebar from 'components/Sidebar';
-import Breadcrumbs from 'components/Breadcrumbs';
+import { Heading1 } from 'components/_basic/Headings';
+import Text from 'components/_basic/Text';
+import TextButton from 'components/_basic/TextButton';
 
 
 const mapStateToProps = (state) => {
@@ -14,22 +15,16 @@ const mapStateToProps = (state) => {
 class ContentList extends React.PureComponent {
   render() {
     const { courses } = this.props;
-    const sidebarItems = courses.map((item) => ({
-      title: item.fields.title,
-      url: `/courses/${item.fields.slug}`
-    }));
-    const breadcrumbsItems = [
-      {
-        title: 'Courses',
-        url: '/'
-      }
-    ];
 
     return (
       <React.Fragment>
-        <Breadcrumbs items={breadcrumbsItems} />
         <div className="content-list">
-          <Sidebar className="content-list__sidebar" items={sidebarItems} />
+          <Heading1>Courses</Heading1>
+          { courses.map((item) => (
+            <Text key={item.sys.id}>
+              <TextButton href={`/courses/${item.fields.slug}`}>{ item.fields.title }</TextButton>
+            </Text>
+          ))}
         </div>
       </React.Fragment>
     );
