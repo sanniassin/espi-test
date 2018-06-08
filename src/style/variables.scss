@@ -1,3 +1,5 @@
+@import 'easings.scss';
+
 $mobile: 'only screen and (max-width: 767px)';
 $desktop: 'only screen and (min-width: 768px)';
 
@@ -18,6 +20,24 @@ $grey-light: #CDCDCD;
 $grey-background: #F8F8F8;
 $blue: #1071FF;
 $blue-hover: #579CFF;
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes rotate-clockswise {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
 
 @mixin default-transition($props...) {
   $str: '';

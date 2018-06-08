@@ -18,3 +18,7 @@ h2 { @include heading2; }
 
 @import '../components/!(_basic)/**/*.scss';
 @import '../pages/**/*.scss';
+
+.main {
+  &__loader { animation: fade-in 0.3s $easeInQuint 0.1s forwards; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; opacity: 0; }
+}
