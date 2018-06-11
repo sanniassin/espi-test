@@ -13,6 +13,7 @@ import Spinner from '../src/components/_basic/Spinner';
 import Breadcrumbs from '../src/components/Breadcrumbs';
 import Sidebar from '../src/components/Sidebar';
 import Article from '../src/components/Article';
+import LessonCodeSnippets from './LessonCodeSnippets';
 
 import '../src/style/style.scss';
 
@@ -75,6 +76,8 @@ storiesOf('Article', module).add('Demo', () => (
     <img src="https://www.alexirpan.com/public/rl-hard/bender-70.jpg" alt="Futurama Bender meme" />
   </Article>
 ));
+
+storiesOf('Code snippet', module).add('Demo', LessonCodeSnippets);
 
 storiesOf('Button', module)
   .add('With text', () => <Button onClick={action('clicked')} style={{ width: 200 }}>Hello Button</Button>);
